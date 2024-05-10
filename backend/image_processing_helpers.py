@@ -1,15 +1,13 @@
 from PIL import Image
 import numpy as np
 
-def get_neighboring_pixels(image, x, y):
+def get_neighboring_pixels(image: Image, x: float, y: float):
     """
-    Extract a 4x4 pixel neighborhood centered around the specified position in the image.
-    
+    Extract a 4x4 pixel neighborhood centered around the specified position in the image. 
     Parameters:
         image (PIL.Image.Image): The input image.
         x (float): The x-coordinate of the target pixel.
-        y (float): The y-coordinate of the target pixel.
-        
+        y (float): The y-coordinate of the target pixel.      
     Returns:
         list: A list of neighboring pixels (as tuples containing RGB values).
     """
@@ -29,14 +27,12 @@ def get_neighboring_pixels(image, x, y):
     return neighborhood
 
 
-def calculate_interpolation_weights(x, y):
+def calculate_interpolation_weights(x: float, y: float):
     """
-    Calculate interpolation weights for bicubic interpolation.
-    
+    Calculate interpolation weights for bicubic interpolation.  
     Parameters:
         x (float): The x-coordinate of the target pixel.
-        y (float): The y-coordinate of the target pixel.
-        
+        y (float): The y-coordinate of the target pixel.      
     Returns:
         numpy.ndarray: A 4x4 matrix of interpolation weights.
     """
@@ -53,14 +49,12 @@ def calculate_interpolation_weights(x, y):
     return weights
 
 
-def compute_weighted_average(neighborhood, weights):
+def compute_weighted_average(neighborhood: list, weights: np.ndarray):
     """
     Compute the weighted average of neighboring pixels using interpolation weights.
-    
     Parameters:
         neighborhood (list): A list of neighboring pixels (as tuples containing RGB values).
-        weights (numpy.ndarray): A 4x4 matrix of interpolation weights.
-        
+        weights (numpy.ndarray): A 4x4 matrix of interpolation weights.   
     Returns:
         tuple: The weighted average pixel value (as a tuple containing RGB values).
     """
