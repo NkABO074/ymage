@@ -7,7 +7,8 @@ def bicubic_interpolation(original_image, scaling_factor):
     upscaled_width = original_image.width * scaling_factor
     
     # Create an empty array for the upscaled image
-    upscaled_image = np.zeros((upscaled_height, upscaled_width, original_image.channels))
+    # upscaled_image = np.zeros((upscaled_height, upscaled_width, original_image.channels))
+    upscaled_image = np.zeros((upscaled_height, upscaled_width, 3), dtype=np.uint8)
     
     # Iterate through each pixel in the upscaled image
     for y in range(upscaled_height):

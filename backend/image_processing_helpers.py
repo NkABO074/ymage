@@ -52,7 +52,6 @@ def calculate_interpolation_weights(x, y):
     
     return weights
 
-import numpy as np
 
 def compute_weighted_average(neighborhood, weights):
     """
@@ -67,19 +66,21 @@ def compute_weighted_average(neighborhood, weights):
     """
     # Convert the neighborhood list to a NumPy array for element-wise multiplication
     neighborhood_array = np.array(neighborhood)
-    
+
+    # Reshape the weights array to match the shape of the neighborhood array
+    weights_reshaped = weights.reshape(-1, 1)
+
     # Compute the weighted sum of neighboring pixels
-    weighted_sum = np.sum(neighborhood_array * weights)
-    
+    weighted_sum = np.sum(neighborhood_array * weights_reshaped, axis=0)
+
     # Normalize the sum by dividing by the total weight
     total_weight = np.sum(weights)
     weighted_average = weighted_sum / total_weight
-    
+
     # Ensure that the pixel values are within the valid range [0, 255]
     weighted_average = np.clip(weighted_average, 0, 255)
-    
+
     # Round the pixel values to integers
     weighted_average = np.round(weighted_average).astype(np.uint8)
-    
-    return tuple(weighted_average)
 
+    return tuple(weighted_average)

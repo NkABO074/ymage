@@ -2,7 +2,7 @@ from image_processing import bicubic_interpolation
 from file_processing import load_image, save_image
 
 # Load the original image
-original_image = load_image("input.jpg")
+original_image = load_image("./backgrond01.jpg")
 
 # Define the scaling factor
 scaling_factor = 2
